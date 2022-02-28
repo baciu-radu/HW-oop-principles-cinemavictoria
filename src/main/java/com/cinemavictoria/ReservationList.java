@@ -10,8 +10,8 @@ public class ReservationList {
     }
 
     public Customer findReservationByName(String name) {
-        for(Customer c: customerList) {
-            if(c.getName().equals(name)){
+        for (Customer c : customerList) {
+            if (c.getName().equals(name)) {
                 return c;
             }
         }
@@ -25,7 +25,7 @@ public class ReservationList {
     }
 
     public void listCustomers() {
-        for(Customer customer: customerList) {
+        for (Customer customer : customerList) {
             System.out.println(customer);
         }
     }

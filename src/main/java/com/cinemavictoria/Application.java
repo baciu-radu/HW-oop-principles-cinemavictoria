@@ -8,14 +8,16 @@ public class Application {
 
     static Scanner in = new Scanner(System.in);
     static ReservationList reservationList = new ReservationList();
+    static CurrentMovies currentMovies = new CurrentMovies();
 
     public static void main(String[] args) {
         List<Customer> customerList = new ArrayList<>();
+        List<Movie> movieList = new ArrayList<>();
         boolean isNewStart = true;
         String option = "start";
 
         while (isNewStart == true && option != "exit") {
-            System.out.println("available options: [newReservation, addMovie, addEvent, list, exit]");
+            System.out.println("available options: [newReservation, addMovie, addEvent, listCustomers, listMovies, exit]");
             System.out.print("option=");
             option = in.next();
 
@@ -24,8 +26,15 @@ public class Application {
                     Customer customer = createCustomer();
                     reservationList.addCustomerToReservations(customer);
                     break;
-                case "list":
+                case "addMovie":
+                    Movie movie = createMovie();
+                    currentMovies.addMovieToMovies(movie);
+                    break;
+                case "listCustomers":
                     listCustomers(reservationList);
+                    break;
+                case "listMovies":
+                    listMovies(currentMovies);
                     break;
                 case "exit":
                     System.exit(0);
@@ -36,6 +45,8 @@ public class Application {
             }
         }
     }
+
+    //----------------creates new Customer--------------------
 
     private static Customer createCustomer() {
         System.out.println("Provide personal details:");
@@ -50,7 +61,6 @@ public class Application {
         Integer telephone = in.nextInt();
         System.out.print("movie=");
         String movie = in.next();
-//        System.out.println(Customer);
         return new Customer(name, email, telephone, movie);
     }
 
@@ -59,7 +69,13 @@ public class Application {
         reservationList.listCustomers();
         System.out.println("------");
     }
-//    private static void checkAvailability() {
+    private static void listMovies(CurrentMovies currentMovies) {
+        System.out.println("List all available movies:");
+        currentMovies.listMovies();
+        System.out.println("------");
+    }
+
+    //    private static void checkAvailability() {
 //        System.out.println("check");
 //        Car car;
 //        do {
@@ -71,5 +87,27 @@ public class Application {
 //
 //
 //    }
+    //----------------creates new Movie--------------------
+
+    private static Movie createMovie() {
+        System.out.println("Provide movie details:");
+        //read name
+        System.out.print("name=");
+        String movieName = in.next();
+        //read director
+        System.out.print("director=");
+        String director = in.next();
+        //read date
+        System.out.print("date=");
+        String date = in.next();
+        //read hour
+        System.out.print("hour=");
+        Integer hour = in.nextInt();
+        //read sala
+        System.out.print("sala=");
+        Integer sala = in.nextInt();
+
+        return new Movie(movieName, director, date, hour, sala);
+    }
 
 }
