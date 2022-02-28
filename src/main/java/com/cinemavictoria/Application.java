@@ -7,25 +7,26 @@ import java.util.Scanner;
 public class Application {
 
     static Scanner in = new Scanner(System.in);
-    static AllReservations reservationList = new AllReservations();
+    static ReservationList reservationList = new ReservationList();
 
     public static void main(String[] args) {
         List<Customer> customerList = new ArrayList<>();
-        boolean isNewStart=true;
-        String option= "start";
+        boolean isNewStart = true;
+        String option = "start";
 
-        while (isNewStart ==true && option != "exit"){
+        while (isNewStart == true && option != "exit") {
             System.out.println("available options: [newReservation, addMovie, addEvent");
             System.out.print("option=");
             option = in.next();
 
-            switch (option){
+            switch (option) {
                 case "newReservation":
                     Customer customer = createCustomer();
-                    reservationList.add
+                    reservationList.addCustomerToReservations(customer);
             }
         }
     }
+
     private static Customer createCustomer() {
         System.out.println("Provide personal details:");
         //read name
@@ -36,11 +37,10 @@ public class Application {
         String email = in.next();
         //read telephone
         System.out.print("telephone=");
-        Integer telephone = in.next();
+        Integer telephone = in.nextInt();
+//        System.out.println(Customer);
+        return new Customer(name, email, telephone);
     }
-    public List<Customer> addReservationToList(Customer customer) {
-        AllReservations.add(customer);
-        return reservationList;
 
 
 }
