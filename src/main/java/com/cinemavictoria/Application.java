@@ -1,14 +1,19 @@
 package com.cinemavictoria;
 
+import com.cinemavictoria.controllers.Numeric;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application {
 
     static Scanner in = new Scanner(System.in);
     static ReservationList reservationList = new ReservationList();
     static CurrentMovies currentMovies = new CurrentMovies();
+    static AllEvents allEvents = new AllEvents();
 
     public static void main(String[] args) {
         List<Customer> customerList = new ArrayList<>();
@@ -17,7 +22,7 @@ public class Application {
         String option = "start";
 
         while (isNewStart == true && option != "exit") {
-            System.out.println("available options: [newReservation, addMovie, addEvent, listCustomers, listMovies, exit]");
+            System.out.println("available options: [newReservation, addMovie, addEvent, listCustomers, listMovies, listEvents, exit]");
             System.out.print("option=");
             option = in.next();
 
@@ -30,11 +35,18 @@ public class Application {
                     Movie movie = createMovie();
                     currentMovies.addMovieToMovies(movie);
                     break;
+                case "addEvent":
+                    Event event = createEvent();
+                    allEvents.addEventToEvents(event);
+                    break;
                 case "listCustomers":
                     listCustomers(reservationList);
                     break;
                 case "listMovies":
                     listMovies(currentMovies);
+                    break;
+                case "listEvents":
+                    listEvents(allEvents);
                     break;
                 case "exit":
                     System.exit(0);
@@ -57,8 +69,22 @@ public class Application {
         System.out.print("email=");
         String email = in.next();
         //read telephone
+        String telephone = null;
+        Boolean x = false;
         System.out.print("telephone=");
-        Integer telephone = in.nextInt();
+        while(x==false)  {
+            telephone = in.next();
+            if (Numeric.isNumeric(telephone)==false){
+                System.out.println("Invalid phone number, please retry");
+//                System.out.println(Numeric.isNumeric(telephone));
+            }else x=true;
+
+
+//            if telephone.matches("[0-9]+")
+
+        }
+//        System.out.print("telephone=");
+//        Integer telephone = in.nextInt();
         System.out.print("movie=");
         String movie = in.next();
         return new Customer(name, email, telephone, movie);
@@ -72,6 +98,11 @@ public class Application {
     private static void listMovies(CurrentMovies currentMovies) {
         System.out.println("List all available movies:");
         currentMovies.listMovies();
+        System.out.println("------");
+    }
+    private static void listEvents(AllEvents allEvents) {
+        System.out.println("List all future events:");
+        allEvents.listEvents();
         System.out.println("------");
     }
 
@@ -108,6 +139,26 @@ public class Application {
         Integer sala = in.nextInt();
 
         return new Movie(movieName, director, date, hour, sala);
+    }
+    private static Event createEvent() {
+        System.out.println("Provide event details:");
+        //read name
+        System.out.print("name=");
+        String eventName = in.next();
+        //read director
+        System.out.print("contact=");
+        String contact = in.next();
+        //read date
+        System.out.print("date=");
+        String date = in.next();
+        //read hour
+        System.out.print("hour=");
+        Integer hour = in.nextInt();
+        //read sala
+        System.out.print("sala=");
+        Integer sala = in.nextInt();
+
+        return new Event(eventName, contact, date, hour, sala);
     }
 
 }
