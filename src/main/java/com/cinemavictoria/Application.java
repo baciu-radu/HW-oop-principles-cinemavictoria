@@ -15,7 +15,7 @@ public class Application {
         String option = "start";
 
         while (isNewStart == true && option != "exit") {
-            System.out.println("available options: [newReservation, addMovie, addEvent");
+            System.out.println("available options: [newReservation, addMovie, addEvent, list, exit");
             System.out.print("option=");
             option = in.next();
 
@@ -23,6 +23,16 @@ public class Application {
                 case "newReservation":
                     Customer customer = createCustomer();
                     reservationList.addCustomerToReservations(customer);
+                    break;
+                case "list":
+                    listCustomers(reservationList);
+                    break;
+                case "exit":
+                    System.exit(0);
+                    break;
+                default:
+                    System.err.println("Invalid option");
+
             }
         }
     }
@@ -42,5 +52,22 @@ public class Application {
         return new Customer(name, email, telephone);
     }
 
+    private static void listCustomers(ReservationList reservationList) {
+        System.out.println("List all resevations:");
+        reservationList.listCustomers();
+        System.out.println("------");
+    }
+//    private static void checkAvailability() {
+//        System.out.println("check");
+//        Car car;
+//        do {
+//            System.out.print("carId=");
+//            String id = in.next();
+//            car = carMarket.findCarById(id);
+//        }
+//        while (car == null);
+//
+//
+//    }
 
 }

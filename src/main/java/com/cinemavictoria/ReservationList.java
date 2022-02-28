@@ -24,7 +24,7 @@ public class ReservationList {
         return customerList;
     }
 
-    public void listCars() {
+    public void listCustomers() {
         for(Customer customer: customerList) {
             System.out.println(customer);
         }
