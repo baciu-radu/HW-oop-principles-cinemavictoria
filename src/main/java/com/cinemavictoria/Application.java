@@ -15,7 +15,7 @@ public class Application {
         String option = "start";
 
         while (isNewStart == true && option != "exit") {
-            System.out.println("available options: [newReservation, addMovie, addEvent, list, exit");
+            System.out.println("available options: [newReservation, addMovie, addEvent, list, exit]");
             System.out.print("option=");
             option = in.next();
 
@@ -55,7 +55,7 @@ public class Application {
     }
 
     private static void listCustomers(ReservationList reservationList) {
-        System.out.println("List all resevations:");
+        System.out.println("List all reservations:");
         reservationList.listCustomers();
         System.out.println("------");
     }
