@@ -3,10 +3,10 @@ package com.cinemavictoria;
 public class Customer {
     private String name;
     private String email;
-    private Integer telephone;
+    private String telephone;
     private String movie;
 
-    public Customer(String name, String email, int telephone, String movie) {
+    public Customer(String name, String email, String telephone, String movie) {
         this.name = name;
         this.email = email;
         this.telephone = telephone;
@@ -21,7 +21,7 @@ public class Customer {
         return email;
     }
 
-    public Integer getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
     public String getMovie() {
