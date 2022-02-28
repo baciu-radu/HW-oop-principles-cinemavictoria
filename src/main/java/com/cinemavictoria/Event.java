@@ -16,6 +16,7 @@ public class Event {
         this.hour = hour;
         this.sala = sala;
     }
+
     public String getEventName() {
         return eventName;
     }
@@ -35,6 +36,7 @@ public class Event {
     public Integer getSala() {
         return sala;
     }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -45,6 +47,5 @@ public class Event {
                 ", sala=" + sala +
                 '}';
     }
-//    public Event(String eventName, String contact, String date, Integer hour, Integer sala) {
-//    }
+
 }

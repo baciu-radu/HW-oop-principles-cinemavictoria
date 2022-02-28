@@ -24,7 +24,7 @@ public class Application {
         while (isNewStart == true && option != "exit") {
             System.out.println("available options: [newReservation, addMovie, addEvent, listCustomers, listMovies, listEvents, exit]");
             System.out.print("option=");
-            option = in.next();
+            option = in.nextLine();
 
             switch (option) {
                 case "newReservation":
@@ -64,29 +64,32 @@ public class Application {
         System.out.println("Provide personal details:");
         //read name
         System.out.print("name=");
-        String name = in.next();
+        String name = in.nextLine();
         //read email
         System.out.print("email=");
-        String email = in.next();
+        String email = in.nextLine();
         //read telephone
         String telephone = null;
         Boolean x = false;
         System.out.print("telephone=");
         while(x==false)  {
-            telephone = in.next();
+            telephone = in.nextLine();
             if (Numeric.isNumeric(telephone)==false){
                 System.out.println("Invalid phone number, please retry");
 //                System.out.println(Numeric.isNumeric(telephone));
             }else x=true;
 
 
-//            if telephone.matches("[0-9]+")
+            boolean matches = telephone.matches("[0-9]+");
+            if (telephone.matches("[0-9]+")==true){
+                System.out.println("phone is good");
+            }
 
         }
 //        System.out.print("telephone=");
 //        Integer telephone = in.nextInt();
         System.out.print("movie=");
-        String movie = in.next();
+        String movie = in.nextLine();
         return new Customer(name, email, telephone, movie);
     }
 
@@ -124,19 +127,20 @@ public class Application {
         System.out.println("Provide movie details:");
         //read name
         System.out.print("name=");
-        String movieName = in.next();
+        String movieName = in.nextLine();
         //read director
         System.out.print("director=");
-        String director = in.next();
+        String director = in.nextLine();
         //read date
         System.out.print("date=");
-        String date = in.next();
+        String date = in.nextLine();
         //read hour
         System.out.print("hour=");
         Integer hour = in.nextInt();
         //read sala
         System.out.print("sala=");
         Integer sala = in.nextInt();
+        String buffer = in.nextLine();
 
         return new Movie(movieName, director, date, hour, sala);
     }
@@ -144,19 +148,20 @@ public class Application {
         System.out.println("Provide event details:");
         //read name
         System.out.print("name=");
-        String eventName = in.next();
+        String eventName = in.nextLine();
         //read director
         System.out.print("contact=");
-        String contact = in.next();
+        String contact = in.nextLine();
         //read date
         System.out.print("date=");
-        String date = in.next();
+        String date = in.nextLine();
         //read hour
         System.out.print("hour=");
         Integer hour = in.nextInt();
         //read sala
         System.out.print("sala=");
         Integer sala = in.nextInt();
+        String buffer = in.nextLine();
 
         return new Event(eventName, contact, date, hour, sala);
     }
