@@ -48,8 +48,10 @@ public class Application {
         //read telephone
         System.out.print("telephone=");
         Integer telephone = in.nextInt();
+        System.out.print("movie=");
+        String movie = in.next();
 //        System.out.println(Customer);
-        return new Customer(name, email, telephone);
+        return new Customer(name, email, telephone, movie);
     }
 
     private static void listCustomers(ReservationList reservationList) {
